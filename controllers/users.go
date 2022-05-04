@@ -15,10 +15,10 @@ import (
 var userIDKey = "userID"
 
 func users(router chi.Router) {
-	router.Get("/", getAllUsers)
-	router.Post("/", createUser)
+	router.Get("/users", getAllUsers)
+	router.Post("/users/create", createUser)
 
-	router.Route("/{userId}", func(router chi.Router) {
+	router.Route("/users/{userId}", func(router chi.Router) {
 		router.Use(UserContext)
 		router.Get("/", getUser)
 		/* 		router.Put("/", updateUser)

@@ -15,8 +15,15 @@ import (
 var bookIDKey = "bookID"
 
 func books(router chi.Router) {
-	router.Get("/", getAllBooks)
-	router.Post("/", createBook)
+	router.Get("/books", getAllBooks)
+	router.Post("/books/create", createBook)
+
+	router.Route("/books/{bookId}", func(router chi.Router) {
+		router.Use(BookContext)
+		router.Get("/", getBook)
+		/* 		router.Put("/", updateBook)
+		   		router.Delete("/", deleteBook) */
+	})
 
 	router.Route("/{bookId}", func(router chi.Router) {
 		router.Use(BookContext)
