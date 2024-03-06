@@ -1,4 +1,4 @@
-FROM golang:1.17.9-alpine3.15 as builder
+FROM golang:1.22.1-alpine as builder
 COPY go.mod go.sum /go/src/github.com/xpero39/simple-books-api/
 WORKDIR /go/src/github.com/xpero39/simple-books-api
 RUN go mod download
