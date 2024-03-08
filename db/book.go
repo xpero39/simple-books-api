@@ -25,7 +25,7 @@ func (db Database) GetAllBooks() (*models.BookList, error) {
 	return list, nil
 }
 
-func (db Database) AddBook(user *models.Book) error {
+func (db Database) AddBook(book *models.Book) error {
 	var id int
 	var createdAt string
 	query := `INSERT INTO books (title, quantity) VALUES ($1, $2) RETURNING id, created_at`
