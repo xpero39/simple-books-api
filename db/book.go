@@ -51,3 +51,13 @@ func (db Database) GetBookById(bookId int) (models.Book, error) {
 		return book, err
 	}
 }
+
+// TEST this function!
+func (db Database) DeleteBook(bookId int) error {
+	query := `DELETE FROM books WHERE id = $1;`
+	_, err := db.Conn.Exec(query, bookId)
+	if err != nil {
+		return err
+	}
+	return nil
+}

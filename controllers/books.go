@@ -21,15 +21,16 @@ func books(router chi.Router) {
 	router.Route("/books/{bookId}", func(router chi.Router) {
 		router.Use(BookContext)
 		router.Get("/", getBook)
-		/* 		router.Put("/", updateBook)
-		   		router.Delete("/", deleteBook) */
+		router.Delete("/", deleteBook)
+		/* 		router.Put("/", updateBook) */
 	})
 
-	router.Route("/{bookId}", func(router chi.Router) {
+	router.Route("/{bookId}", func(router chi.Router) { // is this neccessary? books/{bookId} already exists
 		router.Use(BookContext)
 		router.Get("/", getBook)
+		router.Delete("/", deleteBook)
 		/* 		router.Put("/", updateBook)
-		   		router.Delete("/", deleteBook) */
+		 */
 	})
 }
 
@@ -93,7 +94,7 @@ func getBook(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-/* func deleteBook(w http.ResponseWriter, r *http.Request) {
+func deleteBook(w http.ResponseWriter, r *http.Request) {
 	bookId := r.Context().Value(bookIDKey).(int)
 	err := dbInstance.DeleteBook(bookId)
 	if err != nil {
@@ -106,6 +107,7 @@ func getBook(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+/*
 func updateBook(w http.ResponseWriter, r *http.Request) {
 	bookId := r.Context().Value(bookIDKey).(int)
 	bookData := models.Book{}
