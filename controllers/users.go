@@ -86,7 +86,7 @@ func getUser(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-/* func deleteUser(w http.ResponseWriter, r *http.Request) {
+func deleteUser(w http.ResponseWriter, r *http.Request) {
 	userId := r.Context().Value(userIDKey).(int)
 	err := dbInstance.DeleteUser(userId)
 	if err != nil {
@@ -99,6 +99,7 @@ func getUser(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+/*
 func updateUser(w http.ResponseWriter, r *http.Request) {
 	userId := r.Context().Value(userIDKey).(int)
 	userData := models.User{}

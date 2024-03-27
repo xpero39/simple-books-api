@@ -107,7 +107,6 @@ func deleteBook(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-/*
 func updateBook(w http.ResponseWriter, r *http.Request) {
 	bookId := r.Context().Value(bookIDKey).(int)
 	bookData := models.Book{}
@@ -128,4 +127,4 @@ func updateBook(w http.ResponseWriter, r *http.Request) {
 		render.Render(w, r, ServerErrorRenderer(err))
 		return
 	}
-} */
+}

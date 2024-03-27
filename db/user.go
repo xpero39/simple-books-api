@@ -51,3 +51,12 @@ func (db Database) GetUserById(userId int) (models.User, error) {
 		return user, err
 	}
 }
+
+func (db Database) DeleteUser(userId int) error {
+	query := `DELETE FROM users WHERE id = $1;`
+	_, err := db.Conn.Exec(query, userId)
+	if err != nil {
+		return err
+	}
+	return nil
+}
