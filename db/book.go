@@ -62,11 +62,14 @@ func (db Database) DeleteBook(bookId int) error {
 	return nil
 }
 
-func (db Database) UpdateBook(book *models.Book) error {
-	query := `UPDATE books SET title = $1, quantity = $2, rented_quantity = $3, update_at = CURRENT_TIMESTAMP WHERE id = $4;`
-	_, err := db.Conn.Exec(query, book.Title, book.Quantity, book.RentedQuantity, book.ID)
+// TEST this function!
+func (db Database) UpdateBook(bookId int, book models.Book) (models.Book, error) {
+	//Update and return the updated book
+	query := `UPDATE books SET title = $1, quantity = $2, rented_quantity = $3, updated_at = CURRENT_TIMESTAMP WHERE id = $4;`
+	_, err := db.Conn.Exec(query, book.Title, book.Quantity, book.RentedQuantity, bookId)
+
 	if err != nil {
-		return err
+		return book, err
 	}
-	return nil
+	return book, nil
 }

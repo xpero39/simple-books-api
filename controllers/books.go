@@ -22,15 +22,14 @@ func books(router chi.Router) {
 		router.Use(BookContext)
 		router.Get("/", getBook)
 		router.Delete("/", deleteBook)
-		/* 		router.Put("/", updateBook) */
+		router.Put("/", updateBook)
 	})
 
 	router.Route("/{bookId}", func(router chi.Router) { // is this neccessary? books/{bookId} already exists
 		router.Use(BookContext)
 		router.Get("/", getBook)
 		router.Delete("/", deleteBook)
-		/* 		router.Put("/", updateBook)
-		 */
+		/* 		router.Put("/", updateBook) */
 	})
 }
 
@@ -128,3 +127,8 @@ func updateBook(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 }
+
+// TODO:
+// Add functions to update Book rent quantity
+// Add functions to rent a book
+// Add functions to return a book
